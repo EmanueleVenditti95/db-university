@@ -30,7 +30,13 @@ WHERE `teachers`.`id` = 44;
 sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e
 nome
 
-
+SELECT CONCAT(`students`.`surname`,' ',`students`.`name`) AS 'studente',`degrees`.*, `departments`.`name` AS 'dipartimento'
+FROM `students`
+INNER JOIN `degrees`
+ON `students`.`degree_id` = `degrees`.`id`
+INNER JOIN `departments`
+ON `degrees`.`department_id` = `departments`.`id`
+ORDER BY CONCAT(`students`.`surname`,`students`.`name`);
 
 5. Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
 
